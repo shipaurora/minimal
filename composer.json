@@ -1,0 +1,23 @@
+{
+    "name": "aurora/minimal",
+    "description": "A minimal admin theme for Aurora CMS: quiet, flat and neutral, in light and dark.",
+    "type": "library",
+    "license": "proprietary",
+    "require": {
+        "php": "^8.3",
+        "aurora/cms": "@dev",
+        "filament/filament": "^5.10"
+    },
+    "autoload": {
+        "psr-4": {
+            "Aurora\\Minimal\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Aurora\\Minimal\\ThemeServiceProvider"
+            ]
+        }
+    }
+}

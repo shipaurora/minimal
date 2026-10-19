@@ -1,0 +1,106 @@
+/*
+ * The Minimal theme's default design tokens (colours, fonts, light and dark text), for its prebuilt
+ * admin theme. A site that builds its own admin theme brings its own instead.
+ */
+@theme {
+    --font-display: 'Bricolage Grotesque', 'Inter', ui-sans-serif, system-ui, sans-serif;
+    --font-body: 'Inter', ui-sans-serif, system-ui, sans-serif;
+
+    --color-brand-50: oklch(0.969 0.016 285);
+    --color-brand-100: oklch(0.943 0.03 285);
+    --color-brand-200: oklch(0.894 0.058 285);
+    --color-brand-300: oklch(0.811 0.104 285);
+    --color-brand-400: oklch(0.709 0.165 285);
+    --color-brand-500: oklch(0.606 0.222 285);
+    --color-brand-600: oklch(0.541 0.246 285);
+    --color-brand-700: oklch(0.471 0.226 285);
+    --color-brand-800: oklch(0.398 0.185 285);
+    --color-brand-900: oklch(0.343 0.148 285);
+    --color-brand-950: oklch(0.243 0.106 285);
+
+    --color-accent-50: oklch(0.984 0.019 190);
+    --color-accent-100: oklch(0.953 0.051 190);
+    --color-accent-200: oklch(0.91 0.093 190);
+    --color-accent-300: oklch(0.855 0.138 190);
+    --color-accent-400: oklch(0.789 0.154 190);
+    --color-accent-500: oklch(0.704 0.14 190);
+    --color-accent-600: oklch(0.6 0.118 190);
+    --color-accent-700: oklch(0.511 0.096 190);
+    --color-accent-800: oklch(0.437 0.078 190);
+    --color-accent-900: oklch(0.386 0.063 190);
+    --color-accent-950: oklch(0.277 0.046 190);
+
+    --animate-marquee: marquee 40s linear infinite;
+    --animate-float: float 8s ease-in-out infinite;
+    --animate-fade-up: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+
+    @keyframes marquee {
+        from { transform: translateX(0); }
+        to { transform: translateX(-50%); }
+    }
+
+    @keyframes float {
+        0%, 100% { transform: translateY(0) scale(1); }
+        50% { transform: translateY(-18px) scale(1.04); }
+    }
+
+    @keyframes fade-up {
+        from { opacity: 0; transform: translateY(16px); }
+        to { opacity: 1; transform: none; }
+    }
+}
+
+@theme inline {
+    --color-ink: var(--ink);
+    --color-ink-muted: var(--ink-muted);
+    --color-ink-soft: var(--ink-soft);
+    --color-line: var(--line);
+    --color-surface: var(--surface);
+}
+
+@layer base {
+    :root,
+    .tone-light {
+        --ink: var(--color-zinc-950);
+        --ink-muted: var(--color-zinc-600);
+        --ink-soft: var(--color-zinc-500);
+        --line: var(--color-zinc-200);
+        --surface: var(--color-white);
+    }
+
+    .tone-dark {
+        --ink: var(--color-white);
+        --ink-muted: rgb(255 255 255 / 0.78);
+        --ink-soft: rgb(255 255 255 / 0.6);
+        --line: rgb(255 255 255 / 0.14);
+        --surface: rgb(255 255 255 / 0.06);
+    }
+
+    .tone-light,
+    .tone-dark {
+        color: var(--ink-muted);
+    }
+}
+
+@utility text-gradient {
+    background-image: linear-gradient(100deg, var(--color-brand-500), var(--color-accent-400) 55%, var(--color-brand-400));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+@utility bg-aurora {
+    background:
+        radial-gradient(60% 80% at 8% 0%, color-mix(in oklch, var(--color-brand-500) 60%, transparent), transparent 70%),
+        radial-gradient(45% 65% at 92% 8%, color-mix(in oklch, var(--color-accent-400) 45%, transparent), transparent 70%),
+        radial-gradient(70% 80% at 50% 110%, color-mix(in oklch, var(--color-brand-700) 70%, transparent), transparent 70%),
+        var(--color-zinc-950);
+}
+
+@utility bg-grid {
+    background-image:
+        linear-gradient(to right, color-mix(in oklch, var(--ink) 7%, transparent) 1px, transparent 1px),
+        linear-gradient(to bottom, color-mix(in oklch, var(--ink) 7%, transparent) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, black 40%, transparent 100%);
+}

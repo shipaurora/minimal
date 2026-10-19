@@ -1,0 +1,434 @@
+/*
+ * "Minimal" for the media library and the image picker: folders and image cards as plain
+ * tiles with a hairline, a grey outline when hovered, and a plain upload panel. The rules
+ * below the last heading flatten what the rest of this file (shared with Aurora's) lights up.
+ * Hooks are the cms-* classes in resources/views/filament/assets and the picker views.
+ * The drag-and-drop highlights use !important utilities and keep winning over these.
+ */
+
+/* ── Folders ──────────────────────────────────────────────────────────── */
+
+.cms-folder-tile {
+    border: 1px solid transparent;
+    border-radius: 1.125rem;
+    padding: 0.875rem;
+    background:
+        linear-gradient(var(--minimal-card-solid), var(--minimal-card-solid)) padding-box,
+        var(--minimal-edge) border-box;
+    box-shadow: var(--minimal-shadow);
+    transition: transform 180ms, box-shadow 180ms;
+}
+
+.dark .cms-folder-tile {
+    background:
+        linear-gradient(var(--minimal-card), var(--minimal-card)) padding-box,
+        var(--minimal-edge) border-box;
+}
+
+.cms-folder-tile:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        0 18px 40px -18px color-mix(in oklch, var(--primary-600) 55%, transparent),
+        0 0 0 1px color-mix(in oklch, var(--primary-500) 35%, transparent);
+}
+
+.cms-folder-icon {
+    border-radius: 0.75rem;
+    color: #fff;
+    background: linear-gradient(135deg, var(--primary-600), color-mix(in oklch, var(--primary-500) 60%, var(--minimal-cyan)));
+    box-shadow: 0 8px 18px -8px color-mix(in oklch, var(--primary-600) 90%, transparent), inset 0 1px 0 rgb(255 255 255 / 0.25);
+}
+
+.cms-folder-tile .font-semibold {
+    font-family: var(--minimal-display);
+    letter-spacing: -0.01em;
+}
+
+/* Breadcrumb trail and the grid/list switch as glass pills. */
+.cms-folder-trail > button {
+    border-radius: 9999px;
+    padding-inline: 0.75rem;
+}
+
+.cms-segment {
+    border-radius: 9999px;
+    padding: 0.2rem;
+    background: color-mix(in oklch, var(--minimal-card-solid) 65%, transparent);
+    backdrop-filter: blur(12px);
+    box-shadow: var(--minimal-shadow), inset 0 0 0 1px var(--minimal-hairline);
+    --tw-ring-shadow: 0 0 #0000;
+}
+
+.cms-segment > button {
+    border-radius: 9999px;
+}
+
+.cms-segment > button[aria-pressed='true'] {
+    background: var(--minimal-ink);
+    color: var(--minimal-cyan);
+    box-shadow: 0 6px 14px -6px color-mix(in oklch, var(--primary-600) 80%, transparent);
+}
+
+/* ── Image cards ──────────────────────────────────────────────────────── */
+
+.fi-ta-record.cms-asset-record {
+    /* Flat at rest: no edge or shadow until hovered or selected. */
+    border: 1px solid transparent;
+    border-radius: 1.25rem;
+    background: transparent;
+    box-shadow: none;
+    transition: transform 180ms, box-shadow 180ms, background 180ms;
+    --tw-ring-shadow: 0 0 #0000;
+}
+
+.fi-ta-record.cms-asset-record:hover {
+    transform: translateY(-3px);
+    background:
+        linear-gradient(var(--minimal-card-solid), var(--minimal-card-solid)) padding-box,
+        var(--minimal-edge) border-box;
+    box-shadow: 0 22px 46px -22px color-mix(in oklch, var(--primary-600) 60%, transparent);
+}
+
+.dark .fi-ta-record.cms-asset-record:hover {
+    background:
+        linear-gradient(var(--minimal-card), var(--minimal-card)) padding-box,
+        var(--minimal-edge) border-box;
+}
+
+.fi-ta-record.cms-asset-record.fi-selected {
+    background:
+        linear-gradient(var(--minimal-card-solid), var(--minimal-card-solid)) padding-box,
+        linear-gradient(140deg, var(--primary-500), var(--minimal-cyan)) border-box;
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--primary-500) 18%, transparent), 0 18px 40px -20px color-mix(in oklch, var(--primary-600) 60%, transparent);
+}
+
+.fi-ta-record.cms-asset-record img {
+    border-radius: 0.875rem;
+}
+
+/* In the list layout the rows stay rows. */
+tr.cms-asset-record,
+.fi-ta-table .cms-asset-record {
+    transform: none !important;
+}
+
+/* ── Upload panel ─────────────────────────────────────────────────────── */
+
+.cms-upload-panel {
+    border-radius: 1.25rem;
+    background: color-mix(in oklch, var(--minimal-card-solid) 88%, transparent);
+    backdrop-filter: blur(18px) saturate(1.5);
+    box-shadow: var(--minimal-shadow-lifted), inset 0 0 0 1px var(--minimal-hairline);
+    --tw-ring-shadow: 0 0 #0000;
+}
+
+.cms-upload-panel .bg-primary-600 {
+    background: linear-gradient(90deg, var(--primary-600), var(--minimal-cyan));
+    box-shadow: 0 0 10px color-mix(in oklch, var(--primary-500) 60%, transparent);
+}
+
+/* ── Image picker ─────────────────────────────────────────────────────── */
+
+.cms-pick-thumb {
+    border-radius: 0.875rem;
+    transition: transform 160ms, box-shadow 160ms;
+}
+
+.group:hover > .cms-pick-thumb {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px -14px color-mix(in oklch, var(--primary-600) 65%, transparent);
+}
+
+.peer:checked + .cms-pick-thumb {
+    box-shadow: 0 0 0 2px var(--primary-500), 0 0 0 5px color-mix(in oklch, var(--primary-500) 20%, transparent), 0 14px 30px -14px color-mix(in oklch, var(--primary-600) 70%, transparent);
+    --tw-ring-shadow: 0 0 #0000;
+}
+
+/* Grid cards: the checkbox floats over the image's top-left corner and only shows on hover
+   or once selected, so the image and text use the full width of the card. */
+.fi-ta-ctn-with-content-layout .fi-ta-record.cms-asset-record {
+    position: relative;
+    padding: 0.625rem !important;
+}
+
+.fi-ta-ctn-with-content-layout .fi-ta-record.cms-asset-record .fi-ta-record-content-ctn,
+.fi-ta-ctn-with-content-layout .fi-ta-record.cms-asset-record .fi-ta-record-content {
+    padding: 0 !important;
+}
+
+/* Grid cards fill their row, and the tags sit at the bottom of each card, so they line up
+   across a row whatever the length of the title and alt text above them. */
+.fi-ta-ctn-with-content-layout .fi-ta-record.cms-asset-record .fi-ta-record-content-ctn {
+    align-self: stretch;
+}
+
+.fi-ta-ctn-with-content-layout .fi-ta-record.cms-asset-record .fi-ta-record-content-ctn > div,
+.fi-ta-ctn-with-content-layout .fi-ta-record.cms-asset-record .fi-ta-record-content,
+.fi-ta-ctn-with-content-layout .fi-ta-record.cms-asset-record .fi-ta-record-content > .fi-grid-col,
+.fi-ta-ctn-with-content-layout .fi-ta-record.cms-asset-record .fi-ta-stack {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+.fi-ta-ctn-with-content-layout .fi-ta-record.cms-asset-record .fi-ta-stack > .fi-ta-col:has(.cms-asset-tags) {
+    margin-top: auto;
+}
+
+.fi-ta-ctn-with-content-layout .fi-ta-record.cms-asset-record > .fi-ta-record-checkbox {
+    position: absolute;
+    top: 1.125rem;
+    left: 1.125rem;
+    z-index: 2;
+    margin: 0;
+    opacity: 0;
+    transition: opacity 120ms;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 0.3);
+}
+
+.fi-ta-ctn-with-content-layout .fi-ta-record.cms-asset-record:hover > .fi-ta-record-checkbox,
+.fi-ta-ctn-with-content-layout .fi-ta-record.cms-asset-record > .fi-ta-record-checkbox:checked,
+.fi-ta-ctn-with-content-layout .fi-ta-record.cms-asset-record > .fi-ta-record-checkbox:focus-visible,
+.fi-ta-ctn-with-content-layout .fi-ta-record.cms-asset-record.fi-selected > .fi-ta-record-checkbox {
+    opacity: 1;
+}
+
+/* Unchecked, over a photo: a dark glass square with a white edge, visible on light and dark images. */
+.fi-ta-ctn-with-content-layout .fi-ta-record.cms-asset-record > .fi-ta-record-checkbox:not(:checked) {
+    width: 1.25rem;
+    height: 1.25rem;
+    border: 2px solid rgb(255 255 255 / 0.9);
+    background-color: rgb(15 12 30 / 0.45);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 0 0 1px rgb(0 0 0 / 0.35), 0 1px 4px rgb(0 0 0 / 0.45);
+    --tw-ring-shadow: 0 0 #0000;
+}
+
+.fi-ta-ctn-with-content-layout .fi-ta-record.cms-asset-record > .fi-ta-record-checkbox:checked {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+/* Files that aren't images: a tinted tile with the file type's icon. */
+.cms-file-tile {
+    background:
+        radial-gradient(circle at 30% 20%, color-mix(in oklch, var(--primary-500) 14%, transparent), transparent 70%),
+        color-mix(in oklch, var(--minimal-card-solid) 85%, var(--primary-500));
+    box-shadow: inset 0 0 0 1px var(--minimal-hairline);
+}
+
+/* Right-click menus on image cards and folder tiles (resources/js/admin/context-menu.js):
+   a dropdown panel at the pointer. */
+.fi-dropdown-panel.cms-context-menu {
+    position: fixed;
+    z-index: 60;
+    width: max-content;
+    min-width: 12rem;
+    max-width: 18rem;
+}
+
+/* ── Folder tree in the "Library" breadcrumb's dropdown (resources/views/filament/assets/folder-tree.blade.php) ── */
+
+.fi-dropdown-panel:has(> .cms-folder-tree) {
+    width: min(20rem, calc(100vw - 2rem));
+    max-width: none;
+}
+
+.cms-folder-tree {
+    padding: 0.375rem;
+}
+
+.cms-folder-tree-list {
+    display: grid;
+    gap: 0.125rem;
+}
+
+/* Rows like the sidebar's items, indented by depth. */
+.cms-folder-tree-item {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 0.75rem;
+    padding: 0.45rem 0.6rem;
+    padding-inline-start: calc(0.5rem + var(--depth, 0) * 1rem);
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-align: start;
+    color: var(--minimal-rail-text);
+    transition: background-color 160ms, box-shadow 160ms, color 160ms;
+}
+
+.cms-folder-tree-item:hover {
+    background: var(--minimal-rail-hover);
+    color: var(--minimal-rail-strong);
+}
+
+.cms-folder-tree-item:focus-visible {
+    outline: 2px solid var(--primary-500);
+    outline-offset: -2px;
+}
+
+.cms-folder-tree-active,
+.cms-folder-tree-active:hover {
+    background: var(--minimal-rail-active-bg);
+    box-shadow: var(--minimal-rail-active-shadow);
+    color: var(--minimal-rail-active-text);
+    font-weight: 600;
+}
+
+/* Something is dragged over it: drop here. */
+.cms-folder-tree-over {
+    background: color-mix(in oklch, var(--primary-500) 14%, transparent);
+    box-shadow: inset 0 0 0 2px var(--primary-500);
+}
+
+.cms-folder-tree-icon {
+    width: 1.125rem;
+    height: 1.125rem;
+    flex-shrink: 0;
+    color: var(--primary-500);
+}
+
+.cms-folder-tree-active .cms-folder-tree-icon {
+    color: var(--minimal-rail-active-icon);
+}
+
+.cms-folder-tree-name {
+    min-width: 0;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.cms-folder-tree-count {
+    flex-shrink: 0;
+    font-family: var(--minimal-mono);
+    font-size: 0.7rem;
+    color: var(--gray-400);
+}
+
+.cms-folder-tree-active .cms-folder-tree-count {
+    color: inherit;
+    opacity: 0.75;
+}
+
+/* The caret's place in every row, so names line up; the toggle sits over it. */
+.cms-folder-tree-caret {
+    display: inline-grid;
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+    place-items: center;
+}
+
+.cms-folder-tree-toggle {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    inset-inline-start: calc(0.5rem + var(--depth, 0) * 1rem);
+    translate: 0 -50%;
+    border-radius: 0.25rem;
+    color: var(--gray-400);
+}
+
+.cms-folder-tree-toggle:hover {
+    color: var(--minimal-rail-strong);
+}
+
+li:has(> div > .cms-folder-tree-active) .cms-folder-tree-toggle {
+    color: var(--minimal-rail-active-text);
+}
+
+/* A file the right-click menu selected on its own: marked, without a ticked checkbox, and
+   without the table showing a selection (select-all state, the bulk actions button). */
+.cms-asset-record-menu-target .fi-ta-record-checkbox {
+    visibility: hidden;
+}
+
+/* The select-all checkbox keeps looking as it did (unticked) rather than half-ticked. */
+.cms-menu-selecting .fi-ta-content-header .fi-checkbox-input:is(:checked, :indeterminate) {
+    background-color: #fff;
+    background-image: none;
+    box-shadow: 0 0 0 1px rgb(3 7 18 / 0.1), 0 1px 2px 0 rgb(0 0 0 / 0.05);
+}
+
+.dark .cms-menu-selecting .fi-ta-content-header .fi-checkbox-input:is(:checked, :indeterminate) {
+    background-color: rgb(255 255 255 / 0.05);
+    box-shadow: 0 0 0 1px rgb(255 255 255 / 0.2), 0 1px 2px 0 rgb(0 0 0 / 0.05);
+}
+
+/* The bulk actions button, which shows itself while something is selected. The menu's items
+   are copies of its items, and choosing one clicks the hidden original. */
+.cms-menu-selecting .fi-ta-header-toolbar .fi-dropdown[x-show*="getSelectedRecordsCount"] {
+    display: none !important;
+}
+
+.cms-asset-record-menu-target {
+    box-shadow: 0 0 0 2px var(--color-primary-500);
+}
+
+/* ── Minimal: plain tiles ────────────────────────────────────────────── */
+
+.cms-folder-tile,
+.dark .cms-folder-tile {
+    border: 1px solid var(--minimal-hairline);
+    border-radius: 0.75rem;
+    background: var(--minimal-card-solid);
+}
+
+.cms-folder-tile:hover {
+    transform: none;
+    box-shadow: 0 0 0 1px var(--gray-400);
+}
+
+.cms-folder-icon {
+    border-radius: 0.5rem;
+    color: var(--gray-700);
+    background: var(--minimal-card-solid);
+    box-shadow: inset 0 0 0 1px var(--minimal-hairline);
+}
+
+.dark .cms-folder-icon {
+    color: var(--gray-200);
+}
+
+.fi-ta-record.cms-asset-record:hover,
+.dark .fi-ta-record.cms-asset-record:hover {
+    transform: none;
+    background: var(--minimal-card-solid);
+    box-shadow: 0 0 0 1px var(--gray-400);
+}
+
+.fi-ta-record.cms-asset-record.fi-selected {
+    background: var(--minimal-card-solid);
+    box-shadow: 0 0 0 2px var(--gray-900);
+}
+
+.dark .fi-ta-record.cms-asset-record.fi-selected {
+    box-shadow: 0 0 0 2px #fff;
+}
+
+.fi-ta-record.cms-asset-record img {
+    border-radius: 0.5rem;
+}
+
+.cms-upload-panel {
+    border-radius: 0.75rem;
+    background: var(--minimal-card-solid);
+    backdrop-filter: none;
+}
+
+.cms-upload-panel .bg-primary-600 {
+    background: var(--gray-900);
+    box-shadow: none;
+}
+
+.dark .cms-upload-panel .bg-primary-600 {
+    background: #fff;
+}
+
+.cms-file-tile {
+    background: color-mix(in oklch, var(--minimal-card-solid) 94%, var(--gray-500));
+}

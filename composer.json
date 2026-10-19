@@ -2,7 +2,7 @@
     "name": "aurora/minimal",
     "description": "A minimal admin theme for Aurora CMS: quiet, flat and neutral, in light and dark.",
     "type": "library",
-    "license": "proprietary",
+    "license": "MIT",
     "require": {
         "php": "^8.3",
         "aurora/cms": "@dev",

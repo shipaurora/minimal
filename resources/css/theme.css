@@ -1,6 +1,7 @@
 /*
  * The Minimal theme, prebuilt (resources/dist/theme.css, npm run build:aurora): Filament's
- * theme, the plugins', its default tokens, its styles and the CMS's markup. Built in this
+ * theme, the plugins', its default tokens, the CMS's components, its styles and the CMS's
+ * markup. Built in this
  * repository, so the paths below are this repository's.
  */
 @import '../../../../vendor/filament/filament/resources/css/theme.css';
@@ -8,6 +9,7 @@
 
 @import './tokens.css';
 @import '../../../../vendor/datlechin/filament-menu-builder/resources/css/index.css';
+@import '../../../cms/resources/css/components.css';
 @import './index.css';
 @import '../../../cms/resources/css/sources.css';
 

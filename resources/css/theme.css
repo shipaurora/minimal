@@ -4,14 +4,14 @@
  * markup. Built in this
  * repository, so the paths below are this repository's.
  */
-@import '../../../../vendor/filament/filament/resources/css/theme.css';
+@import '../../../../aurora-docs/vendor/filament/filament/resources/css/theme.css';
 @plugin '@tailwindcss/typography';
 
 @import './tokens.css';
-@import '../../../../vendor/datlechin/filament-menu-builder/resources/css/index.css';
+@import '../../../../aurora-docs/vendor/datlechin/filament-menu-builder/resources/css/index.css';
 @import '../../../cms/resources/css/components.css';
 @import './index.css';
 @import '../../../cms/resources/css/sources.css';
 
-@source '../../../../vendor/datlechin/filament-menu-builder/resources/**/*.blade.php';
-@source '../../../../vendor/wallacemartinss/filament-icon-picker/resources/views/**/*';
+@source '../../../../aurora-docs/vendor/datlechin/filament-menu-builder/resources/**/*.blade.php';
+@source '../../../../aurora-docs/vendor/wallacemartinss/filament-icon-picker/resources/views/**/*';

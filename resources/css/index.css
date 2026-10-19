@@ -1,9 +1,6 @@
 /*
  * The Minimal theme's admin styles (aurora/minimal): its look, over the CMS's components. Its
- * prebuilt theme (theme.css) is made from this, and a site can compile it itself with its
- * blocks (Themes::build('minimal', …)): import Filament's theme, its design tokens, the
- * CMS's components (aurora/cms: resources/css/components.css), then this file and the CMS's
- * sources (resources/css/sources.css), and add @source for its blocks.
+ * prebuilt theme (theme.css) is made from this.
  */
 @import './minimal.css';
 

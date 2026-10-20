@@ -42,6 +42,9 @@
             "providers": [
                 "Aurora\\Minimal\\ThemeServiceProvider"
             ]
+        },
+        "branch-alias": {
+            "dev-main": "1.x-dev"
         }
     }
 }

@@ -1,11 +1,35 @@
 {
     "name": "shipaurora/minimal-theme",
     "description": "A minimal admin theme for Aurora CMS: quiet, flat and neutral, in light and dark.",
+    "keywords": [
+        "aurora",
+        "aurora-cms",
+        "cms",
+        "laravel",
+        "filament",
+        "filament-theme",
+        "admin-theme",
+        "theme",
+        "dark-mode",
+        "minimal",
+        "tailwindcss"
+    ],
+    "homepage": "https://shipaurora.com",
     "type": "library",
     "license": "MIT",
+    "authors": [
+        {
+            "name": "Thomas Alrek",
+            "email": "thomas@alrek.no"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/shipaurora/minimal-theme/issues",
+        "source": "https://github.com/shipaurora/minimal-theme"
+    },
     "require": {
         "php": "^8.3",
-        "shipaurora/cms": "@dev",
+        "shipaurora/cms": "^1.0",
         "filament/filament": "^5.10"
     },
     "autoload": {

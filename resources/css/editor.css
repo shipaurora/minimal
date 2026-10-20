@@ -2,7 +2,7 @@
  * "Minimal" for the visual editor (carljanzell/filament-page-builder): a flat toolbar, the
  * block palette and inspector as plain panels with a hairline, and the page on a plain
  * background. Selection, drop lines and handles keep one clear blue, so they stand out on
- * any website's content. The editor's layout is the CMS's (aurora/cms: components.css).
+ * any website's content. The editor's layout is the CMS's (shipaurora/cms: components.css).
  *
  * The package's stylesheet is a separate asset; every rule here is scoped under .fpb
  * (one class more specific) so it wins whichever loads last. Block content on the

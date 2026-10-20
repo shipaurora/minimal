@@ -1,7 +1,7 @@
 /*
  * "Minimal" for the media library and the image picker: folders and image cards as plain
  * tiles with a hairline and a grey outline when hovered, and a plain upload panel. Their
- * layout is the CMS's (aurora/cms: components.css); the hooks are the cms-* classes in
+ * layout is the CMS's (shipaurora/cms: components.css); the hooks are the cms-* classes in
  * resources/views/filament/assets and the picker views. The drag-and-drop highlights use
  * !important utilities and keep winning over these.
  */

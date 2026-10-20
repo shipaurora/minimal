@@ -1,11 +1,11 @@
 {
-    "name": "aurora/minimal",
+    "name": "shipaurora/minimal-theme",
     "description": "A minimal admin theme for Aurora CMS: quiet, flat and neutral, in light and dark.",
     "type": "library",
     "license": "MIT",
     "require": {
         "php": "^8.3",
-        "aurora/cms": "@dev",
+        "shipaurora/cms": "@dev",
         "filament/filament": "^5.10"
     },
     "autoload": {

@@ -26,7 +26,7 @@ glows, in light and dark.
 ## Requirements
 
 - PHP 8.4 or newer
-- [Aurora](https://github.com/shipaurora/cms) (`shipaurora/cms`), with Filament 5.10 or newer
+- [Aurora](https://github.com/shipaurora/cms) (`shipaurora/cms`), with Filament 5.10.3 or newer
 
 ## Installation
 

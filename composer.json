@@ -25,8 +25,8 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/shipaurora/minimal-theme/issues",
-        "source": "https://github.com/shipaurora/minimal-theme"
+        "issues": "https://github.com/shipaurora/minimal/issues",
+        "source": "https://github.com/shipaurora/minimal"
     },
     "require": {
         "php": "^8.3",

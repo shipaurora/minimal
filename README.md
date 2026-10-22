@@ -35,7 +35,7 @@ composer require shipaurora/minimal
 php artisan filament:assets
 ```
 
-`filament:assets` copies the stylesheet to `public/css/shipaurora/minimal`. Run it again
+`filament:assets` copies the stylesheet to `public/css/shipaurora/minimal-theme`. Run it again
 after updating the package.
 
 ## Usage

@@ -19,7 +19,9 @@ class ThemeServiceProvider extends ServiceProvider
             description: __('Quiet and flat: neutral greys, thin lines and nothing that glows.'),
             stylesheet: __DIR__.'/../resources/dist/theme.css',
             preview: __DIR__.'/../resources/preview.webp',
-            package: 'shipaurora/minimal',
+            // Published where sites have always loaded it from (public/css/shipaurora/minimal-theme),
+            // from before the package was renamed: a site that updates keeps its styles.
+            package: 'shipaurora/minimal-theme',
             // Made for both: people switch in the user menu.
             modes: ['light', 'dark'],
         );

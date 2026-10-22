@@ -1,5 +1,5 @@
 {
-    "name": "shipaurora/minimal-theme",
+    "name": "shipaurora/minimal",
     "description": "A minimal admin theme for Aurora CMS: quiet, flat and neutral, in light and dark.",
     "keywords": [
         "aurora",
@@ -32,6 +32,9 @@
         "php": "^8.3",
         "shipaurora/cms": "^1.0",
         "filament/filament": "^5.10"
+    },
+    "replace": {
+        "shipaurora/minimal-theme": "self.version"
     },
     "autoload": {
         "psr-4": {

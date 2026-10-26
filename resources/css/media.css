@@ -3,7 +3,9 @@
  * tiles with a hairline and a grey outline when hovered, and a plain upload panel. Their
  * layout is the CMS's (shipaurora/cms: components.css); the hooks are the cms-* classes in
  * resources/views/filament/assets and the picker views. The drag-and-drop highlights use
- * !important utilities and keep winning over these.
+ * !important utilities and keep winning over these. Since Aurora 1.2.5 a folder is a card
+ * of the files' grid (.cms-folder-record) and is outlined like them; .cms-folder-tile is for
+ * older versions.
  */
 
 /* ── Folders ──────────────────────────────────────────────────────────── */
@@ -53,7 +55,7 @@
 
 /* ── Files ────────────────────────────────────────────────────────────── */
 
-.fi-ta-record.cms-asset-record:hover {
+.fi-ta-record:is(.cms-asset-record, .cms-folder-record):hover {
     transform: none;
     background: var(--minimal-card);
     box-shadow: 0 0 0 1px var(--gray-400);
